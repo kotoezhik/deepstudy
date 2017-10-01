@@ -1,0 +1,6 @@
+{
+  "extends": "hrundel/node",
+  "parserOptions": {
+    "ecmaVersion": 6
+  }
+}
