@@ -4,17 +4,17 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-//var time;
+
 function romanTime(time) {
-    // Немного авторского кода и замечательной магии
+    // Немного авторского кода и замечательной магии	
+	
 	var timeHH = time.substr(0,2);
 	var timeMM = time.substr(3,2);
 	
-	if (time.length != 5 || timeHH < 0 || timeHH >= 24 || timeMM < 0 || timeMM > 59) {
-		time = 'Неверное значение';
-		return time;
+	if (time.length != 5 || timeHH < 0 || timeHH >= 24 || timeMM < 0 || timeMM > 59 || isNaN(timeHH) || isNaN(timeMM)) {
+		throw new TypeError('Неверное время!');
 	}
-	
+		
 	function convertNumber(baseNumber) {
 		if (baseNumber == 0) return 'N';
 		
@@ -73,18 +73,12 @@ function romanTime(time) {
 			case 9:
 				secondNumber = 'IX';
 				break;
-		}
-		
+		}		
 		
 		return firstNumber + secondNumber;
 	}
 	
-	//console.log(timeHH + ':' + convertNumber(timeMM));
-	//console.log(timeHH + ':' + timeMM);
-	
     return time = convertNumber(timeHH) + ':' + convertNumber(timeMM);
 }
 
-console.info(romanTime('23:59'));
-
-//module.exports = romanTime;
+module.exports = romanTime;
